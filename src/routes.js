@@ -1,9 +1,10 @@
 const express = require('express');
+const PessoaFisicaController = require('./controllers/PessoaFisicaController');
 
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-  return res.json({ hello: 'world' });
-});
+routes.get('/', PessoaFisicaController.index);
+routes.post('/', PessoaFisicaController.store);
+routes.delete('/:cpf', PessoaFisicaController.delete);
 
 module.exports = routes;
