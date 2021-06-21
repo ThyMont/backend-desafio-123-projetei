@@ -9,6 +9,15 @@ module.exports = {
       return res.json({ message: error.message });
     }
   },
+  async findById(req, res) {
+    try {
+      const { cpf } = req.params;
+      const pf = await PessoaFisica.findByPk(cpf);
+      return res.json(pf);
+    } catch (error) {
+      return res.json({ message: error.message });
+    }
+  },
 
   async store(req, res) {
     try {
@@ -32,6 +41,23 @@ module.exports = {
           cpf: cpf,
         },
       });
+      return res.json({ message: 'Operação concluída com sucesso' });
+    } catch (error) {
+      return res.json({ message: error.message });
+    }
+  },
+  async edit(req, res) {
+    try {
+      const { cpf } = req.params;
+      const { name, phoneNumber, birthday } = req.body;
+      const r = await PessoaFisica.update(
+        { name, phoneNumber, birthday },
+        {
+          where: {
+            cpf: cpf,
+          },
+        }
+      );
       return res.json({ message: 'Operação concluída com sucesso' });
     } catch (error) {
       return res.json({ message: error.message });
