@@ -50,7 +50,7 @@ module.exports = {
     try {
       const { cpf } = req.params;
       const { name, phoneNumber, birthday } = req.body;
-      const r = await PessoaFisica.update(
+      const updatedPessoaFisica = await PessoaFisica.update(
         { name, phoneNumber, birthday },
         {
           where: {
@@ -58,7 +58,7 @@ module.exports = {
           },
         }
       );
-      return res.json({ message: 'Operação concluída com sucesso' });
+      return res.json(updatedPessoaFisica);
     } catch (error) {
       return res.json({ message: error.message });
     }
