@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon -r dotenv/config index.js",
     "start": "npm index.js",
-    "heroku-postbuild": "npm install && npm run build",
+    "heroku-postbuild": "yarn && yarn run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
