@@ -11,4 +11,4 @@ app.use('/pf', routes);
 app.get('/', (req, res) =>
   res.json({ message: 'Acesse a rota /pf para listar todos os resultados' })
 );
-app.listen(port);
+app.listen(process.env.PORT || port);
